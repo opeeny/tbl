@@ -338,28 +338,27 @@ echo "<div id='successmessage'
 	  
 	  </div>
 		<div class="form-group"> 
-	  
-	   <label  class="col-sm-1 control-label label-format">Request Reason</label>
-      <div class="col-sm-3"> 
-        <input type="text" style="color: #222;
-		"class="form-control" placeholder="Request Reason" name="request_reason" />
-      </div>
-	  
-	  <label class="col-sm-1 control-label label-format">Request Date</label>
-	  <div class="col-sm-3"> 
-	  <div class="input-group date form_date col-md-12" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input12" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" size="16" type="text" value="" readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                </div>
-				<input type="hidden" id="dtp_input12" value="" name="request_date" />
-				</div>
-	<label  class="col-sm-1 control-label label-format">Requested By</label>
-    <div class="col-sm-3"> 
-	 <input type="text" class="form-control" name="requestor" placeholder="Start Typing for options" <?php if($s_code=='PV'){echo 'required';} ?>  list="requestor" />
- <datalist id="requestor">
-	   
-        <select name="requestor_option" class="form-control" onclick="" id="requestorsearch">
+			<label  class="col-sm-1 control-label label-format">Request Reason</label>
+			<div class="col-sm-3"> 
+			<input type="text" style="color: #222;
+			"class="form-control" placeholder="Request Reason" name="request_reason" />
+			</div>
+
+			<label class="col-sm-1 control-label label-format">Request Date</label>
+			<div class="col-sm-3"> 
+			<div class="input-group date form_date col-md-12" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input12" data-link-format="yyyy-mm-dd">
+			<input class="form-control" size="16" type="text" value="" readonly>
+			<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+			<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+			</div>
+			<input type="hidden" id="dtp_input12" value="" name="request_date" />
+			</div>
+			<label  class="col-sm-1 control-label label-format">Requested By</label>
+			<div class="col-sm-3"> 
+			<input type="text" class="form-control" name="requestor" placeholder="Start Typing for options" <?php if($s_code=='PV'){echo 'required';} ?>  list="requestor" />
+			<datalist id="requestor">
+
+			<select name="requestor_option" class="form-control" onclick="" id="requestorsearch">
 			<option value="">-Select requester-</option>
 			<?php
 			include("../includes/dbconfig.php");
@@ -373,12 +372,11 @@ echo "<div id='successmessage'
 			echo "<option value='$r_id' style='background-color:#CCCCCC;'><b>$rname  - $organisation</b></option>";
 			}
 			?>
-		</select>
-		</datalist>
-		<span onclick="reloadRequestors();" style="cursor: pointer; color:blue;">Reload</span> &nbsp;&nbsp;&nbsp;
-		<span onclick="window.open('new_requester.php')" style="cursor: pointer; color:blue;">New Requester</span>
-	</div>
-	  
+			</select>
+			</datalist>
+			<span onclick="reloadRequestors();" style="cursor: pointer; color:blue;">Reload</span> &nbsp;&nbsp;&nbsp;
+			<span onclick="window.open('new_requester.php')" style="cursor: pointer; color:blue;">New Requester</span>
+		</div>
     </div>
 	
 	

@@ -1,0 +1,54 @@
+
+09-03-17 AJ Added column interpretation on results_fm and results_fm_hist
+			Added column interpretation on results_zn and results_zn_hist
+			
+>>>>>>>>>>>>
+ALTER TABLE tablename  ADD interpretation VARCHAR(255) NOT NULL  AFTER `result`
+			
+			
+			Created table results_culture_interpretation
+			
+>>>>>>>>
+CREATE TABLE `results_culture_interpretation` (
+  `labno` int(10) NOT NULL,
+  `result` varchar(255) NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  `resdate` date NOT NULL,
+  `restech` varchar(255) NOT NULL,
+  `entrant` varchar(255) NOT NULL,
+  `entrytime` datetime NOT NULL,
+  `reviewer` varchar(255) NOT NULL,
+  `reviewdate` date NOT NULL,
+  `status` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+			
+
+Vincent om 15 March,
+changed age years and month data type to varcar
+Vincent March 23 17 3:00pm
+added coloumn rejreason on all results tables and resulthist tables , and rejection_reason table
+
+27-07-17 AJ
+ALTER TABLE `samples` CHANGE `volume` `volume` FLOAT(10,3);
+
+29-06-17 AJ
+ALTER TABLE `results_solidculture` ADD `interpretation` VARCHAR(255) NOT NULL AFTER `result_qt`;
+ALTER TABLE `results_liquidculture` ADD `interpretation` VARCHAR(255) NOT NULL AFTER `result_bap`;
+ALTER TABLE `results_bloodculture` ADD `interpretation` VARCHAR(255) NOT NULL AFTER `result_qt`;
+
+04-07-17 AJ
+CREATE TABLE `resultsoptions_culture_interpretation` (
+  `id` int(11) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `options` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `resultsoptions_culture_interpretation` (`id`, `code`, `options`) VALUES(1, 'N', 'Negative for M. tuberculosis');
+INSERT INTO `resultsoptions_culture_interpretation` (`id`, `code`, `options`) VALUES(3, 'P', 'Positive for M. tuberculosis');
+INSERT INTO `resultsoptions_culture_interpretation` (`id`, `code`, `options`) VALUES(4, 'NTM', 'Positive for non-tuberculos mycobacteria (NTM)');
+INSERT INTO `resultsoptions_culture_interpretation` (`id`, `code`, `options`) VALUES(5, 'PNTM', 'Positive for M. tuberculosis and NTM');
+INSERT INTO `resultsoptions_culture_interpretation` (`id`, `code`, `options`) VALUES(6, 'C', 'Contaminated');
+
+
+06-07-17 AJ
+ALTER TABLE `samples` ADD `storage` INT(5) NOT NULL AFTER `media`;

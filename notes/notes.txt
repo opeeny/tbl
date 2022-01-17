@@ -1,0 +1,41 @@
+From Maria 06 June 17,
+include DAYS TO POSITIVE, DAYS REPORTED
+
+
+<<<<<  PLEASE PLEASE PLEASE >>>>>>>
+	DO NOT DELETE THESE NOTES. THEY WILL BE USED TO UPDATE THE DATABASE IN PRODUCTION
+<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>
+ALTER TABLE `samples` ADD `peripheralres` VARCHAR(255) NOT NULL AFTER `consistency`, ADD `hivstatus` VARCHAR(255) NOT NULL AFTER `peripheralres`;
+
+ALTER TABLE `results_dst1` CHANGE `rifampin` `rifampicin` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+
+====
+Created and populated table resultsoptions_bap
+
+Altered table results_liquidculture:
+ALTER TABLE `results_liquidculture` ADD `znc_date` DATE NOT NULL AFTER `rejreason`, ADD `znc_tech` VARCHAR(255) NOT NULL AFTER `znc_date`, ADD `bap_date` DATE NOT NULL AFTER `znc_tech`, ADD `bap_tech` VARCHAR(255) NOT NULL AFTER `bap_date`, ADD `dtp_date` DATE NOT NULL AFTER `bap_tech`, ADD `dtp_tech` VARCHAR(255) NOT NULL AFTER `dtp_date`;
+====
+
+RENAME TABLE `tblis_jcrc`.`identification_method` TO `tblis_jcrc`.`option_identification_methods`;
+
+INSERT INTO `option_identification_methods` (`id`, `code`, `name`, `status`) VALUES (NULL, 'PCR', 'Polymerase Chain Reaction', 'Active');
+INSERT INTO `option_identification_methods` (`id`, `code`, `name`, `status`) VALUES (NULL, 'ZN', 'ZN Smear', 'Active');
+INSERT INTO `option_identification_methods` (`id`, `code`, `name`, `status`) VALUES (NULL, 'Capilia', 'Capilia', 'Active');
+INSERT INTO `option_identification_methods` (`id`, `code`, `name`, `status`) VALUES (NULL, 'HAIN', 'HAIN', 'Active');
+INSERT INTO `option_identification_methods` (`id`, `code`, `name`, `status`) VALUES (NULL, 'QQT-PCR', 'Real Time Polymerase Chain Reaction', 'Active');
+INSERT INTO `option_identification_methods` (`id`, `code`, `name`, `status`) VALUES (NULL, 'PCR (RD Analysis)', 'Polymerase Chain Reaction (RD Analysis)', 'Active');
+INSERT INTO `option_identification_methods` (`id`, `code`, `name`, `status`) VALUES (NULL, 'Genexpert', 'Genexpert', 'Active');
+INSERT INTO `option_identification_methods` (`id`, `code`, `name`, `status`) VALUES (NULL, 'SD TBAgMPT64', 'Standard Diagonostic Kit', 'Active');
+
+
+INSERT INTO `resultsoptions_identification` (`id`, `code`, `options`) VALUES (NULL, 'N', 'Mycobacteria, not M. tuberculosis complex');
+INSERT INTO `resultsoptions_identification` (`id`, `code`, `options`) VALUES (NULL, 'P', 'M. tuberculosis complex');
+INSERT INTO `resultsoptions_identification` (`id`, `code`, `options`) VALUES (NULL, 'NT', 'M. tuberculosis complex not detected');
+INSERT INTO `resultsoptions_identification` (`id`, `code`, `options`) VALUES (NULL, 'P-rif R', 'M.tuberculosis complex, Rif resistance detected');
+INSERT INTO `resultsoptions_identification` (`id`, `code`, `options`) VALUES (NULL, 'P-rif S', 'M.tuberculosis complex, Rif resistance not detected');
+INSERT INTO `resultsoptions_identification` (`id`, `code`, `options`) VALUES (NULL, 'ZN', 'Presumptive M. tuberculosis complex');
+INSERT INTO `resultsoptions_identification` (`id`, `code`, `options`) VALUES (NULL, 'ND', 'Not Done');
+INSERT INTO `resultsoptions_identification` (`id`, `code`, `options`) VALUES (NULL, 'SC', 'See Comment');
+
+
+

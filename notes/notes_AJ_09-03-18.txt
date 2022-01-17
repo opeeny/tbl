@@ -1,0 +1,18 @@
+AJ 09-03-18
+
+The selection of storage (as one of the tests) in sample reg, update and review should be reviewed 
+
+CREATED TABLE FOR LOGGING PRINTING OF REPORTS
+CREATE TABLE `log_printed_reports` (
+  `id` int(10) NOT NULL,
+  `printtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `labno` int(10) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `printedby` varchar(255) NOT NULL
+);
+
+DELETED 2 COLUMNS FROM THE SAMPLES TABLE
+ALTER TABLE `samples` DROP `inoculationdate`, DROP `inoculationtime`;
+
+ADDED A COLUMN ON SAMPLES TABLE
+ALTER TABLE `samples` ADD `finalrpt_printdate` DATE NOT NULL AFTER `lastreviewtime`;

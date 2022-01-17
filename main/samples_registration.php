@@ -383,76 +383,75 @@ echo "<div id='successmessage'
 	
 	
 	<div class="form-group"> 
-      
-	  <label class="col-sm-1 control-label label-format">Collected By<?php echo'<font color="red">'. "**".'</font>';?></label>
-      <div class="col-sm-3"> 
-	   <input type="text" class="form-control" placeholder="Start Typing for options" name="collector" list="collector" REQUIRED/>
- <datalist id="collector">
-	  <select name="collector_option" class="form-control"  onclick="" id="collectorsearch">
-			<option value="">-Select Collectors-</option>
-			<option value="Not Provided">Not Provided</option>
-			<?php
-			include("../includes/dbconfig.php");
-			$sql="SELECT * FROM collectors WHERE status='Active' ORDER BY name";
-			$collector_check=mysqli_query($dbconnection,$sql) or die("ERROR : " . mysqli_error($dbconnection));
+		<label class="col-sm-1 control-label label-format">Collected By<?php echo'<font color="red">'. "**".'</font>';?></label>
+		<div class="col-sm-3"> 
+		<!-- Removed an input mandatory required attribute from collector --->
+		<input type="text" class="form-control" placeholder="Start Typing for options" name="collector" list="collector" />
+		<datalist id="collector">
+		<select name="collector_option" class="form-control"  onclick="" id="collectorsearch">
+		<option value="">-Select Collectors-</option>
+		<option value="Not Provided">Not Provided</option>
+		<?php
+		include("../includes/dbconfig.php");
+		$sql="SELECT * FROM collectors WHERE status='Active' ORDER BY name";
+		$collector_check=mysqli_query($dbconnection,$sql) or die("ERROR : " . mysqli_error($dbconnection));
 
-			while ($collector = mysqli_fetch_array($collector_check,MYSQLI_ASSOC)) {
-				$name = $collector['name'];
-				//$code = $appearance['code'];
-				
-			echo "<option value='$name' style='background-color:#CCCCCC;'>$name</option>";	
-			}
-			?>
+		while ($collector = mysqli_fetch_array($collector_check,MYSQLI_ASSOC)) {
+		$name = $collector['name'];
+		//$code = $appearance['code'];
+
+		echo "<option value='$name' style='background-color:#CCCCCC;'>$name</option>";	
+		}
+		?>
 		</select>
 		</datalist>
 		<span onclick="reloadCollectors();" style="cursor: pointer; color:blue;">Reload</span> &nbsp;&nbsp;&nbsp;
 		<span onclick="window.open('new_collector.php')" style="cursor: pointer; color:blue;">New Collector</span>
-	
-	  <!--<select name="collector" class="form-control" >
-			<option value="">Select Collector</option>
-			<?php
-			include("../includes/dbconfig.php");
-			$sql="SELECT * FROM collectors WHERE status='Active' ORDER BY name";
-			$appearances_check=mysqli_query($dbconnection,$sql) or die("ERROR : " . mysqli_error($dbconnection));
 
-			while ($appearance = mysqli_fetch_array($appearances_check,MYSQLI_ASSOC)) {
-				$name = $appearance['name'];
-				//$code = $appearance['code'];
-				
-			echo "<option value='$name' style='background-color:#CCCCCC;'>$name</option>";	
-			}			
-			?>
+		<!--<select name="collector" class="form-control" >
+		<option value="">Select Collector</option>
+		<?php
+		include("../includes/dbconfig.php");
+		$sql="SELECT * FROM collectors WHERE status='Active' ORDER BY name";
+		$appearances_check=mysqli_query($dbconnection,$sql) or die("ERROR : " . mysqli_error($dbconnection));
+
+		while ($appearance = mysqli_fetch_array($appearances_check,MYSQLI_ASSOC)) {
+		$name = $appearance['name'];
+		//$code = $appearance['code'];
+
+		echo "<option value='$name' style='background-color:#CCCCCC;'>$name</option>";	
+		}			
+		?>
 		</select>-->
-     </div>
+		</div>
 
-     <label  class="col-sm-2 control-label label-format">Collection Method</label>
-       <div class="col-sm-2"> 
-	   <select name="collection_method" class="form-control" >
-			<option value="">-Collection Method-</option>
-			<?php
-			include("../includes/dbconfig.php");
-			$sql="SELECT * FROM option_collmethod WHERE status='Active' ORDER BY name";
-			$collmethods_names=mysqli_query($dbconnection,$sql) or die("ERROR : " . mysqli_error($dbconnection));
+		<label  class="col-sm-2 control-label label-format">Collection Method</label>
+		<div class="col-sm-2"> 
+		<select name="collection_method" class="form-control" >
+		<option value="">-Collection Method-</option>
+		<?php
+		include("../includes/dbconfig.php");
+		$sql="SELECT * FROM option_collmethod WHERE status='Active' ORDER BY name";
+		$collmethods_names=mysqli_query($dbconnection,$sql) or die("ERROR : " . mysqli_error($dbconnection));
 
-			while ($collmethod_name = mysqli_fetch_array($collmethods_names,MYSQLI_ASSOC)) {
-				$name = $collmethod_name['name'];
-				$code = $collmethod_name['code'];
-				
-			echo "<option value='$name' style='background-color:#CCCCCC;'>$name</option>";	
-			}			
-			?>
+		while ($collmethod_name = mysqli_fetch_array($collmethods_names,MYSQLI_ASSOC)) {
+		$name = $collmethod_name['name'];
+		$code = $collmethod_name['code'];
+
+		echo "<option value='$name' style='background-color:#CCCCCC;'>$name</option>";	
+		}			
+		?>
 		</select></div>
-		
+
 		<label class="col-sm-1 control-label label-format">HIV Status</label>
 		<div class="col-sm-2"> 
 		<select name="hivstatus" class="form-control" >
-			<option value="Not Provided">Not Provided</option>
-			<option value="Negative">Ct2 - Negative</option>
-			<option value="Not Known">Not Known</option>
-			<option value="Positive">Ct1 - Positive</option>
+		<option value="Not Provided">Not Provided</option>
+		<option value="Negative">Ct2 - Negative</option>
+		<option value="Not Known">Not Known</option>
+		<option value="Positive">Ct1 - Positive</option>
 		</select>
-      </div>
-		
+		</div>
 	</div>
 	
 	<div class="form-group">

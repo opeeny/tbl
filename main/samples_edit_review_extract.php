@@ -1,3 +1,4 @@
+
 <div class="form-group"> 
   <label  class="col-sm-1 control-label label-format">PID#</label>
       <div class="col-sm-3"> 
@@ -118,7 +119,7 @@ text-transform: capitalize;"class="form-control" name="sampleid" />
 	   <option value="Week">Week</option>
 	   <option value="Day">Day</option>
 	   <option value="Others">Other Options</option>
-	</select>	
+	   </select>	
 	
 	</div>
        <div class="col-sm-3" id="response"> 
@@ -249,23 +250,25 @@ text-transform: capitalize;"class="form-control" name="sampleid" />
 		</select>-->
         
       </div>
-<label  class="col-sm-1 control-label label-format">Collection Method</label>
+	  <!----- Collection method and visit_interval should not be blank on sample's update and review ------>
+		<label  class="col-sm-1 control-label label-format">Collection Method</label>
        <div class="col-sm-2"> 
-	   <select name="collection_method" class="form-control" >
-			<option value="<?php echo $collmethod; ?>"><?php echo $collmethod; ?></option>
-			<?php
-			include("../includes/dbconfig.php");
-			$sql="SELECT * FROM option_collmethod where status='Active' ORDER BY name";
-			$collmethods_names=mysqli_query($dbconnection,$sql) or die("ERROR : " . mysqli_error($dbconnection));
+		   <select name="collection_method" class="form-control" required >
+				<option value="<?php echo $collmethod; ?>"><?php echo $collmethod; ?></option>
+				<?php
+				include("../includes/dbconfig.php");
+				$sql="SELECT * FROM option_collmethod where status='Active' ORDER BY name";
+				$collmethods_names=mysqli_query($dbconnection,$sql) or die("ERROR : " . mysqli_error($dbconnection));
 
-			while ($collmethod_name = mysqli_fetch_array($collmethods_names,MYSQLI_ASSOC)) {
-				$name = $collmethod_name['name'];
-				$code = $collmethod_name['code'];
-				
-			echo "<option value='$name' style='background-color:#CCCCCC;'>$code($name)</option>";	
-			}			
-			?>
-		</select></div>
+				while ($collmethod_name = mysqli_fetch_array($collmethods_names,MYSQLI_ASSOC)) {
+					$name = $collmethod_name['name'];
+					$code = $collmethod_name['code'];
+					
+				echo "<option value='$name' style='background-color:#CCCCCC;'>$code($name)</option>";	
+				}			
+				?>
+			</select>
+		</div>
 <label class="col-sm-1 control-label label-format">HIV Status</label>
 		<div class="col-sm-2"> 
 		<select name="hivstatus" class="form-control" >
